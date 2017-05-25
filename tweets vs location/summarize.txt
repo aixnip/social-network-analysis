@@ -1,0 +1,21 @@
+Summary
+Number of users collected: 586
+Number of messages collected: 1604 (training message: 602, testing messages: 1002)
+Number of communities discovered: 43
+Average number of users per community: 8.326
+Number of instances per class found: {0.0: 761, 1.0: 241}
+Top misclassified messages - 
+predict 1, true 0, error 0.96429
+tweet text: id have to have more days with 3 classes but that's manageable and totally worth it to give me a 3 day weekend....
+predict 0, true 1, error 0.87281
+tweet text: Great weekend playing for Dame Shirley Bassey.
+BBC1 christmas eve https://t.co/eNtY3m0nK0
+Top correctly classified messages - 
+predict 0, true 0, error 0.07593
+tweet text: Had fun playing #goalball with family over the weekend.  Here is my blog about playing in London a few weeks back https://t.co/9OgOPdTLh2
+predict 1, true 1, error 0.00406
+tweet text: A weekend ICYMI:
+2/1c&gt; @PBSNature: Perfect Partners
+3/2c&gt; Jim Thorpe: World’s Greatest Athlete
+4/3c&gt; @RacingTheRez
+https://t.co/WeKsqS795F

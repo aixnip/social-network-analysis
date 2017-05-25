@@ -1,0 +1,24 @@
+Below explains what each file does in detail, and also the analysis. 
+
+collect.py
+	it collects tweets from Washington state and Florida state, with the query "weekend". The training data contains 300 tweets from each location (600 total). The testing data contains at least 500 from each location (1000 total). the file then collects unique user data out of the 600 training tweets. when running this file, please at least wait until it starts collecting user data. 
+	
+cluster.py
+	this file reads the user data, and create a weighted graph. the weights are Jaccard similarities between users that are larger than 0.01. then, it recursively split the graph with the betweenness approach. the edges will be removed when both ends has more than 2 neighbors, so that the split will not be 1 vs the rests. 
+	
+classify.py
+	this file reads the training and testing tweets. it classifies the tweets into the corresponding locations. it experiments the data with different features, transformations with Logistic Regression classifier. I tried different C values for the classifier, applied tf-idf, l1 penalty and chi2 feature selection. 
+	
+network.png
+	this draws the total network graph. 
+
+Analysis
+
+Cluster
+
+The graph I got from my data has 586 nodes and 3856 edges. My cluster is highly connected with lots of outliers (unconnected nodes). When I first remove the high betweenness edges, often times, it splits into 1 node vs the rests. I also tried eigenvalue approach, but the eigenvalues are very similar to each other. The real world graph is more complicated than I thought. But finnaly, I was able to get 43 communities between size 3 and 100 with a mean size of 8.3. The majority of communities I got has a size smaller than 10. Only a few has over 20. 
+
+
+Classify
+
+I mentioned above. I tried to classify tweets into two distinct location (northwest and southeast of US) based on a common query 'weekend'. For the most part, I use Scikit-learn package. The accuracy result is terrible, only about 0.5 for almost all configurations, which is just about the baseline (always predict one class). I tried l1 and l2 penelty with different C values. Also, tf-idf and the feature selection methods. all of the method somewhat enhance the performance, but it's still very poor. I guess the training set is not large enough. Also, the US has such a common culture, and national topics, so the two location tweets aren't that distinguished from each other.
